@@ -236,8 +236,8 @@ export default (env) => {
         },
       }),
       new Repack.plugins.ModuleFederationPlugin({
-        name: 'remote',
-        filename: 'remote.container.bundle',
+        name: 'mini1',
+        filename: 'mini1.container.bundle',
         exposes: {
           './App': './navigations/RootStack',
         },

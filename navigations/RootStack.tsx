@@ -2,9 +2,12 @@ import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from '../screens/Home';
 export type RootStackParamList ={
-    ['home']:undefined,
+    ['home']:{user:any} |undefined,
 }
-export default function RootStack() {
+type Props  = {
+  user:any
+}
+export default function RootStack(props:Props) {
     const Stack = createNativeStackNavigator<RootStackParamList>();
     return (
       <Stack.Navigator
@@ -12,7 +15,7 @@ export default function RootStack() {
         screenOptions={{
           headerShown: false,
         }}>
-        <Stack.Screen name={'home'} component={Home} />
+        <Stack.Screen initialParams={{user: props.user}} name={'home'} component={Home} />
       </Stack.Navigator>
     );
   }
